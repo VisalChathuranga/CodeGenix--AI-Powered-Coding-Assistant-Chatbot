@@ -261,7 +261,7 @@ body, html {
     margin-bottom: auto;
     margin-left: 10px;
     border-radius: 20px 20px 20px 5px;
-    background: linear-gradient(135deg, #00d4ff, #56bdd2, #1e3c72);
+    background: linear-gradient(135deg, #0b0d0e, #2f4347, #1e3c72);
     padding: 15px 18px;
     position: relative;
     animation: slideIn 0.5s ease-out;

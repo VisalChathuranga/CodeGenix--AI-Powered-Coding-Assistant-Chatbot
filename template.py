@@ -18,7 +18,8 @@ list_of_files = [
     "app.py",
     "research/trials.ipynb",
     "store_index.py",
-    "requirements.txt"
+    "requirements.txt",
+    "static/CodeGenix ChatBot.mp4"
 ]
 
 

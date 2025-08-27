@@ -9,6 +9,7 @@ pdf_extraction.log
 # Python cache
 __pycache__/
 *.py[cod]
+.pdf_cache/
 
 # Environment files
 .env
