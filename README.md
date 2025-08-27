@@ -51,6 +51,7 @@ Watch a demonstration of CodeGenix in action, showcasing its PDF-based query han
 - **Conversation Memory**: Retains up to 10 messages per session in Flask for context-aware interactions.
 - **Web Interface**: Provides a user-friendly Flask-based frontend (`chat.html`) for seamless query submission.
 - **Custom Tools**: Offers utilities for web search, code execution, package installation, and code formatting.
+- **Docker Support**: Containerized deployment for easy setup and scalability.
 
 ---
 
@@ -74,6 +75,7 @@ CodeGenix/
 ├── store_index.py           # PDF indexing script
 ├── template.py              # Project structure setup
 ├── requirements.txt         # Python dependencies
+├── Dockerfile               # Docker container configuration
 ├── research/trials.ipynb    # Experimental Jupyter notebook
 ```
 
@@ -86,42 +88,70 @@ CodeGenix/
 - **Poppler**: For PDF-to-image conversion ([Installation Guide](https://blog.alivate.com.au/poppler-windows/))
 - **Google API Key**: For Google Generative AI embeddings and LLM
 - **Dependencies**: Listed in `requirements.txt`
+- **Docker (Optional)**: For containerized deployment
 
 ---
 
 ## 🔧 Setup Instructions
 
-1. **Clone the Repository**:
+**Option 1: Traditional Installation**
+
+   1. **Clone the Repository**:
+      ```bash
+      git clone https://github.com/VisalChathuranga/CodeGenix--AI-Powered-Coding-Assistant-Chatbot.git
+      cd CodeGenix
+      ```
+
+   2. **Set Up Environment**:
+      - Create a `.env` file in the root directory:
+      ```plaintext
+      GOOGLE_API_KEY=your_google_api_key
+      ```
+      - Install Tesseract and Poppler, and add them to your system PATH.
+
+   3. **Install Dependencies**:
+      ```bash
+      pip install -r requirements.txt
+      ```
+
+   4. **Prepare Knowledge Base**:
+      - Place PDF files (e.g., coding tutorials, documentation) in the `Data` directory.
+      - Run the indexing script to extract text and create the FAISS index:
+      ```bash
+      python store_index.py
+      ```
+
+   5. **Run the Application**:
+      - Start the Flask server:
+      ```bash
+      python app.py
+      ```
+      - Access the chatbot at `http://localhost:8080` in your browser.
+
+**Option 2: Docker Deployment**
+
+   1.**Build Docker Image:**
+
    ```bash
-   git clone https://github.com/VisalChathuranga/CodeGenix--AI-Powered-Coding-Assistant-Chatbot.git
-   cd CodeGenix
+   docker build -t visal99/codegenix-chatbot:latest .
    ```
+   2.**Run Docker Container:**
 
-2. **Set Up Environment**:
-   - Create a `.env` file in the root directory:
-     ```plaintext
-     GOOGLE_API_KEY=your_google_api_key
-     ```
-   - Install Tesseract and Poppler, and add them to your system PATH.
+   - For interactive mode:
 
-3. **Install Dependencies**:
    ```bash
-   pip install -r requirements.txt
+   docker run -p 8080:8080 visal99/codegenix-chatbot:latest
    ```
+   - For detached mode (background):
 
-4. **Prepare Knowledge Base**:
-   - Place PDF files (e.g., coding tutorials, documentation) in the `Data` directory.
-   - Run the indexing script to extract text and create the FAISS index:
-     ```bash
-     python store_index.py
-     ```
-
-5. **Run the Application**:
-   - Start the Flask server:
-     ```bash
-     python app.py
-     ```
-   - Access the chatbot at `http://localhost:8080` in your browser.
+   ```bash
+   docker run -d -p 8080:8080 visal99/codegenix-chatbot:latest
+   ```
+   3.**Push to Docker Hub:**
+   ```bash
+   docker login
+   docker push visal99/codegenix-chatbot:latest
+   ```
 
 ---
 
