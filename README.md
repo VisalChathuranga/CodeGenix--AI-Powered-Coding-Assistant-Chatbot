@@ -130,28 +130,28 @@ CodeGenix/
 
 **Option 2: Docker Deployment**
 
-   1.**Build Docker Image:**
+   1. **Build Docker Image:**
 
-   ```bash
-   docker build -t visal99/codegenix-chatbot:latest .
-   ```
-   2.**Run Docker Container:**
+      ```bash
+      docker build -t visal99/codegenix-chatbot:latest .
+      ```
+   2. **Run Docker Container:**
 
-   - For interactive mode:
+      - For interactive mode:
 
-   ```bash
-   docker run -p 8080:8080 visal99/codegenix-chatbot:latest
-   ```
-   - For detached mode (background):
+      ```bash
+      docker run -p 8080:8080 visal99/codegenix-chatbot:latest
+      ```
+      - For detached mode (background):
 
-   ```bash
-   docker run -d -p 8080:8080 visal99/codegenix-chatbot:latest
-   ```
-   3.**Push to Docker Hub:**
-   ```bash
-   docker login
-   docker push visal99/codegenix-chatbot:latest
-   ```
+      ```bash
+      docker run -d -p 8080:8080 visal99/codegenix-chatbot:latest
+      ```
+   3. **Push to Docker Hub:**
+      ```bash
+      docker login
+      docker push visal99/codegenix-chatbot:latest
+      ```
 
 ---
 
